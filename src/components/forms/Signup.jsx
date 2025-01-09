@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "./Input"
 
 const Signup = () => {
@@ -7,7 +8,7 @@ const Signup = () => {
         email: "",
         password: "",
         phone: "",
-        role:""
+        role: ""
     })
     const inputs = [
         { title: "Name", name: "name" },
@@ -19,7 +20,7 @@ const Signup = () => {
 
     const handleInput = (e) => {
         setFormState(prev => {
-            return {...prev, [e.target.name]: e.target.value}
+            return { ...prev, [e.target.name]: e.target.value }
         })
         console.log(formState)
     }
@@ -29,7 +30,7 @@ const Signup = () => {
 
         const formData = new FormData();
 
-        for(const key in formState){
+        for (const key in formState) {
             formData.append(key, formState[key])
         }
 
@@ -43,7 +44,7 @@ const Signup = () => {
     }
     return (
         <form action="">
-            <h1>Sing up</h1>
+            <h1>Sign up</h1>
             {inputs.map((e, i) => {
                 return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
             })}
@@ -51,6 +52,7 @@ const Signup = () => {
                 {options.map((e, i) => (<option value={e} key={i}>{e}</option>))}
             </select>
             <button onClick={onSubmit}>Submit</button>
+            <Link to={"/signin"}>New User!</Link>
         </form>
     )
 }
