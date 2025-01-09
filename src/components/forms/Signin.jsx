@@ -28,7 +28,8 @@ const Signin = () => {
                 headers: {
                     "Content-Type":"application/json"
                 },
-                body: JSON.stringify(formState)
+                body: JSON.stringify(formState),
+                credentials: "include"
             })
             
             const data = await response.json();
