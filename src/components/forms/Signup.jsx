@@ -43,7 +43,7 @@ const Signup = () => {
     }
     return (
         <form action="">
-            <h1>Singup</h1>
+            <h1>Sing up</h1>
             {inputs.map((e, i) => {
                 return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
             })}
