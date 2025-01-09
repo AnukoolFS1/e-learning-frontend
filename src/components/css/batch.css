@@ -1,0 +1,12 @@
+.batch{
+    padding: 1rem;
+}
+
+.batchCard{
+    border: 1px solid black;
+    box-shadow: 1px 1px 10px #00000040;
+    display: inline-block;
+    color: black;
+    padding: 1rem;
+    border-radius: 4px;
+}
