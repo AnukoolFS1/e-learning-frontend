@@ -33,9 +33,9 @@ const Signup = () => {
             formData.append(key, formState[key])
         }
 
-        const response = await fetch("http://localhost:4000/", {
+        const response = await fetch("http://localhost:4000/signup", {
             method: "POST",
-            body: JSON.stringify(formState)
+            body: formData
         })
 
         const data = await response.json();
