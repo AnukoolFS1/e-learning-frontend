@@ -17,7 +17,6 @@ const Signin = () => {
         setFormState(prev => {
             return { ...prev, [e.target.name]: e.target.value }
         })
-        console.log(formState)
     }
 
     const onSubmit = async (e) => {

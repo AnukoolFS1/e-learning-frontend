@@ -16,7 +16,7 @@ const Sidebar = () => {
             <ul>
                 {
                     aside.map(e => {
-                        return (<li key={e}>
+                        return (<li key={e.name}>
                             <Link to={e.route}>{e.name}</Link>
                         </li>)
                     })
