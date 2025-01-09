@@ -1,0 +1,36 @@
+.sidebar{
+    flex: .8;
+    height: 100vh;
+}
+
+.sidebar ul{
+    list-style-type: none;
+    display: flex;
+    background-color: rgb(40, 52, 74);
+    flex-direction: column;
+    padding-top: 10vh;
+    align-items: center;
+    gap: .8rem;
+    height: 100%;
+}
+
+.sidebar ul li {
+    width: 90%;
+    text-align: center;
+    transition: .1s all linear;
+    border-radius: .4rem;
+}
+
+.sidebar ul li:hover{
+    background-color: rgb(86, 88, 114);
+    transform: translateY(-2px);
+}
+
+.sidebar ul li a{
+    padding: .7rem;
+    border-radius: .4rem;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    color: white;
+}

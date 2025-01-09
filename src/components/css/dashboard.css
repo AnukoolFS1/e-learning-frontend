@@ -1,0 +1,7 @@
+.dashboard{
+    display: flex;
+}
+
+.dashboard div{
+    flex: 4;
+}
