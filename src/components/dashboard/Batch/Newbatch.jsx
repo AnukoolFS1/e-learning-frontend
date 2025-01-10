@@ -9,20 +9,31 @@ const NewBatch = () => {
     if (user?.role === "student") {
         navigate("/dashboard")
     }
+
     const instructors = useSelector(state => state.instructors.instructors)
     const students = useSelector(state => state.students.students)
     const [formState, setFormState] = useState({
         name: "",
-        instructors: user.role === "instructor" ? user.id : "",
+        instructor: user.id,
         students: [],
     });
 
-    const checkbox = (e) => {
+    const checkBox = (e) => {
         if(e.target.checked){
             setFormState(prev => {
-                prev.students
-                return {...prev, }
+               prev.students.push(e.target.name)
+                return {...prev }
             })
+        }else{
+            setFormState(prev => {
+
+                prev.students = prev.students.filter(element => {
+
+                    console.log(e.target.name, element)
+                    return e.target.name !== element
+                })
+                 return {...prev }
+             })
         }
     }
 
@@ -47,8 +58,9 @@ const NewBatch = () => {
                 <ul name="student" id="students">
                     {
                         students?.map(e => {
-                            return (<li key={e.id}>
-                                <input type="checkbox" id={e.email} name={e.id} value={e.id} onChange={checkBox} />
+
+                            return (<li key={e._id}>
+                                <input type="checkbox" id={e.email} name={e._id} onChange={checkBox} />
                                 <label htmlFor={e.email}>{e.name}</label>
                             </li>)
                         })
