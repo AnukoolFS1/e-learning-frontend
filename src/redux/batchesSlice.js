@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    batches: []
+    batches: [],
+    batchDetails: {}
 };
 
 const batchesSlice = createSlice({
@@ -10,11 +11,14 @@ const batchesSlice = createSlice({
     reducers: {
         addBatches: (state, action) => {
             state.batches = action.payload
+        },
+        updateBatchDetails: (state, action) => {
+            state.batchDetails = action.payload
         }
     }
 })
 
-const [batchReducer, {addBatches}] = [batchesSlice.reducer, batchesSlice.actions];
+const [batchReducer, {addBatches, updateBatchDetails}] = [batchesSlice.reducer, batchesSlice.actions];
 
-export { addBatches }
+export { addBatches, updateBatchDetails }
 export default batchReducer

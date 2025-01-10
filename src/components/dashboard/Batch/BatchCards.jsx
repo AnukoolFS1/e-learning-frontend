@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateBatchDetails } from "../../../redux/batchesSlice";
+
 const Batches = ({batch, name, course, instructor}) => {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
     const open = (batch) => {
-
+        dispatch(updateBatchDetails(batch))
+        navigate(`/dashboard/batches/${batch._id}`)
     }
 
     return (

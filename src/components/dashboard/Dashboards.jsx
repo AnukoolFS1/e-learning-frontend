@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate} from "react-router-dom";
 import Sidebar from "./Sidebar"
 import '../css/dashboard.css';
 import { addBatches } from "../../redux/batchesSlice";
@@ -10,6 +10,7 @@ import { addStudents } from "../../redux/studentSlice";
 import { useDispatch } from "react-redux";
 
 const Dashboard = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     useEffect(() => {
         async function fetchData (){
@@ -18,6 +19,7 @@ const Dashboard = () => {
                 credentials: "include"
             })
 
+            if(!response.ok) return navigate('/signin')
             const data = await response.json();
             dispatch(addUser(data.user));
             dispatch(addBatches(data.batches));

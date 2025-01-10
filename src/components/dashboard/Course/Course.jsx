@@ -10,7 +10,7 @@ const Course = () => {
         <div className="batch">
             {
                 courses?.map(e => {
-                    return (<Courses course={e} name={e.name} duration={e.duration} modules={e.modules.length} />)
+                    return (<Courses key={e._id} course={e} name={e.name} duration={e.duration} modules={e.modules.length} />)
                 })
             }
             <AddCard tab={"Course"} />

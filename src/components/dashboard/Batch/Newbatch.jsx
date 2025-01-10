@@ -47,15 +47,19 @@ const NewBatch = () => {
     }
     async function onSubmit(e) {
         e.preventDefault()
-        if (user.role === "instructor") setFormState(prev => ({ ...prev, instructor: user.id }));
-        const response = await fetch("http://localhost:4000/batch", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formState),
-            credentials: "include"
-        });
-        const data = await response.json();
-        console.log(data)
+        try {
+            if (user.role === "instructor") setFormState(prev => ({ ...prev, instructor: user.id }));
+            const response = await fetch("http://localhost:4000/batch", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formState),
+                credentials: "include"
+            });
+            const data = await response.json();
+            console.log(data)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
