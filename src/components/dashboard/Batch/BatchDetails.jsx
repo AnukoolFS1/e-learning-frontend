@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import '../../css/batchDetails.css';
 
-function StudentList ({batchID,display, batchStudents, functioning, path}) {
+function StudentList({ batchID, display, batchStudents, functioning, path }) {
     const [formState, setFormState] = useState({
         batchId: batchID,
-        students:[]
+        students: []
     })
     let students
-    if(batchStudents){
+    if (batchStudents) {
         students = batchStudents;
-    }else{
+    } else {
         students = useSelector((state) => state.students.students)
     }
     const checkBox = (e) => {
@@ -34,7 +34,7 @@ function StudentList ({batchID,display, batchStudents, functioning, path}) {
 
     async function onSubmit(e) {
         e.preventDefault()
-        try{
+        try {
             const response = await fetch(`http://localhost:4000/batch/${path}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -43,12 +43,12 @@ function StudentList ({batchID,display, batchStudents, functioning, path}) {
             });
             const data = await response.json();
             alert(data.msg)
-        }catch(err){
+        } catch (err) {
             console.log(data);
         }
     }
     return (
-        <div style={{ display }}>
+        <div style={{ display, }} className="stList">
             <label htmlFor="students">{functioning}</label>
             <ul name="student" id="students">
                 {
@@ -62,20 +62,21 @@ function StudentList ({batchID,display, batchStudents, functioning, path}) {
                     })
                 }
             </ul>
-            <button style={{display:formState.students.length>0?"block":"none"}} onClick={onSubmit}>{functioning === "Add Students"? "Add": "Remove"}</button>
+            <button style={{ display: formState.students.length > 0 ? "block" : "none" }} onClick={onSubmit}>{functioning === "Add Students" ? "Add" : "Remove"}</button>
         </div>
     )
 }
 
 const BatchDetails = () => {
     const batchDetails = useSelector((state) => state.batches.batchDetails);
+    const user = useSelector((state) => state.user.user)
     if (!batchDetails) {
         return <p>Loading...</p>;
     }
     const [studentList, setStudentList] = useState(false)
     const [rmstudentList, setrmStudentList] = useState(false)
 
-    
+
 
     return (
         <section className="batch-details">
@@ -97,16 +98,24 @@ const BatchDetails = () => {
                     {batchDetails.enrolledStudents.map((student, index) => (
                         <li key={index}>{student.name}</li>
                     ))}
-                    {studentList && <StudentList path={"addstudents"} functioning={"Add Students"} display={studentList?"flex": "none"} batchID={batchDetails._id} />}
-                    <button onClick={() => {setStudentList(!studentList); setrmStudentList(false)}}>Add students</button>
-                    {rmstudentList && <StudentList path={"removestudents"} functioning={"Remove Students"} display={rmstudentList?"flex": "none"} batchID={batchDetails._id} batchStudents={batchDetails.enrolledStudents} />}
-                    <button onClick={() => {setrmStudentList(!rmstudentList); setStudentList(false)}}>Remove Student</button>
+                    {studentList && <StudentList path={"addstudents"} functioning={"Add Students"} display={studentList ? "flex" : "none"} batchID={batchDetails._id} />}
+                    {rmstudentList && <StudentList path={"removestudents"} functioning={"Remove Students"} display={rmstudentList ? "flex" : "none"} batchID={batchDetails._id} batchStudents={batchDetails.enrolledStudents} />}
+                    {user.role !== "student" &&
+                        <>
+                            <button onClick={() => { setStudentList(!studentList); setrmStudentList(false) }}>Add students</button>
+                            <button onClick={() => { setrmStudentList(!rmstudentList); setStudentList(false) }}>Remove Student</button>
+                        </>
+                    }
                 </ul>
             ) : (
                 <>
                     <p>No students enrolled yet.</p>
-                    <StudentList display={studentList?"flex": "none"} batchID={batchDetails._id} />
-                    <button onClick={() => setStudentList(!studentList)}>Add students</button>
+                    {user.role !== "student" &&
+                        <>
+                            <StudentList display={studentList ? "flex" : "none"} path={"addstudents"} batchID={batchDetails._id} functioning={"Add Students"} />
+                            <button onClick={() => setStudentList(!studentList)}>Add students</button>
+                        </>
+                    }
                 </>
             )}
 

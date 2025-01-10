@@ -1,8 +1,14 @@
 .dashboard {
     display: flex;
     color: black;
+    position: relative;
 }
 
 .dashboard div {
     flex: 4;
+}
+
+.dashboard .context{
+    overflow-y: scroll;
+    height: 100vh;
 }

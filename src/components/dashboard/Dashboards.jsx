@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
         <section className="dashboard">
             <Sidebar />
-            <div>
+            <div className="context">
                 <Outlet></Outlet>
             </div>
         </section>

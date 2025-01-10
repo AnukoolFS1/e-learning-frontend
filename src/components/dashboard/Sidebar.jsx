@@ -16,7 +16,7 @@ const Sidebar = () => {
             { name: "Batches", route: "batches" },
             { name: "Courses", route: "courses" },
             { name: "Study Materials", route: "study-materials" },
-            { name: "Students", route: "student" },
+            { name: "Students", route: "students" },
             { name: "Log Out", route: "/" }],
         "student": [
             { name: "Batches", route: "batches" },
