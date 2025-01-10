@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../css/sidebar.css";
 import { useSelector } from "react-redux";
 
@@ -25,13 +25,16 @@ const Sidebar = () => {
             { name: "Log Out", route: "/" }
         ]
     }
+
+    const path = useLocation().pathname.split('/')[2]
+
     const user = useSelector(state => state.user.user)
     return (
         <aside className="sidebar">
             <ul>
                 {
                     aside[user.role]?.map(e => {
-                        return (<li key={e.name}>
+                        return (<li key={e.name} style={{backgroundColor:path===e.route? "#565872":""}}>
                             <Link to={e.route}>{e.name}</Link>
                         </li>)
                     })

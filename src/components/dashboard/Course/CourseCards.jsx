@@ -1,10 +1,10 @@
-const Courses = () => {
+const Courses = ({course, name, duration, modules}) => {
 
     return (
         <div className="batchCard">
-            <h4>Batch Name</h4>
-            <h2>Course Name</h2>
-            <h3>Instructor Name</h3>
+            <h2>{name}</h2>
+            <h3>{modules} Modules</h3>
+            <h4>{duration}</h4>
         </div>
     )
 }

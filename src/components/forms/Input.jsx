@@ -1,8 +1,9 @@
-const Input = ({title, name, handleInput}) => {
+const Input = ({ title, name, handleInput, type }) => {
     return (
-        <div>
+        <div style={{ color: "black" }}>
+            
             <label htmlFor={title}>{title}</label>
-            <input type="text" id={title} name={name} placeholder={title} onChange={handleInput} />
+            <input type={type} id={title} name={name} placeholder={title} onChange={handleInput} />
         </div>
     )
 }

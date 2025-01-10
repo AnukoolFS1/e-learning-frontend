@@ -4,8 +4,8 @@ import Input from "./Input";
 
 const Signin = () => {
     const inputs = [
-        { title: "Email", name: "email" },
-        { title: "Password", name: "password" },
+        { title: "Email", name: "email", type:"text" },
+        { title: "Password", name: "password", type:"password" },
     ]
 
     const navigate = useNavigate()
