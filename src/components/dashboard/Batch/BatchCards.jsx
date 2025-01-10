@@ -1,10 +1,14 @@
-const Batches = () => {
+const Batches = ({batch, name, course, instructor}) => {
+
+    const open = (batch) => {
+
+    }
 
     return (
-        <div className="batchCard">
-            <h4>Batch Name</h4>
-            <h2>Course Name</h2>
-            <h3>Instructor Name</h3>
+        <div className="batchCard" onClick={() => open(batch)}>
+            <h4>{name}</h4>
+            <h2>{course}</h2>
+            <h3>{instructor}</h3>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input";
 
 const Signin = () => {
@@ -7,6 +7,8 @@ const Signin = () => {
         { title: "Email", name: "email" },
         { title: "Password", name: "password" },
     ]
+
+    const navigate = useNavigate()
 
     const [formState, setFormState] = useState({
         email: "",
@@ -32,10 +34,12 @@ const Signin = () => {
                 credentials: "include"
             })
 
-            const data = await response.json();
-            console.log(data)
+            if (response.ok) {
+                navigate('/dashboard')
+            }
         } catch (err) {
         }
+        
     }
 
     return (

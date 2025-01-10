@@ -1,7 +1,9 @@
-.dashboard{
+.dashboard {
     display: flex;
+    color: rgba(255, 255, 255, 0.87);
+
 }
 
-.dashboard div{
+.dashboard div {
     flex: 4;
 }

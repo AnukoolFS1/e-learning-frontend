@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+    students:[]
+};
 
 const studentsSlice = createSlice({
     name: "students",
     initialState,
     reducers: {
         addStudents: (state, action) => {
-            state = action.payload
+            state.students = action.payload
         }
     }
 })

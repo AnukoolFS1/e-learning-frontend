@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input"
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [formState, setFormState] = useState({
         name: "",
         email: "",
         password: "",
         phone: "",
-        role: ""
+        role: "student"
     })
     const inputs = [
         { title: "Name", name: "name" },
@@ -33,16 +34,23 @@ const Signup = () => {
             formData.append(key, formState[key])
         }
 
-        const response = await fetch("http://localhost:4000/signup", {
+        try{const response = await fetch("http://localhost:4000/signup", {
             method: "POST",
             body: formData
         })
-
-        const data = await response.json();
-        console.log(data)
+        if(!response.ok){
+            const data = await response.json();
+            alert(data.msg)
+        }else{
+            navigate('/')
+        }
+    }
+        catch(err){
+            console.log(err)
+        }
     }
     return (
-        <form action="">
+        <form action="" className="">
             <h1>Sign up</h1>
             {inputs.map((e, i) => {
                 return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
