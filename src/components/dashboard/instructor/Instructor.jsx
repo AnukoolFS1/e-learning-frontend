@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux"
 import "../../css/users.css"
-const Students = () => {
-    const students = useSelector(state => state.students.students);
+const Instructor = () => {
+    const instructors = useSelector(state => state.instructors.instructors);
     
     return (
         <div className="users">
             {
-                students?.map(e => {
+                instructors?.map(e => {
                     return (
                         <div className="user">
                             <h2>{e.name}</h2>
@@ -20,4 +20,4 @@ const Students = () => {
     )
 }
 
-export default Students
+export default Instructor

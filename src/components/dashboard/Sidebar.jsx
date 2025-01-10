@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../css/sidebar.css";
 import { useSelector } from "react-redux";
 
@@ -9,7 +9,7 @@ const Sidebar = () => {
             { name: "Batches", route: "batches" },
             { name: "Courses", route: "courses" },
             { name: "Study Materials", route: "study-materials" },
-            { name: "Students", route: "student" },
+            { name: "Students", route: "students" },
             { name: "Instructors", route: "instructors" },
             { name: "Log Out", route: "/" }],
         "instructor": [
@@ -25,8 +25,16 @@ const Sidebar = () => {
             { name: "Log Out", route: "/" }
         ]
     }
+    const navigate = useNavigate();
 
-    const path = useLocation().pathname.split('/')[2]
+    const path = useLocation().pathname.split('/')[2];
+
+    const logout = async () => {
+        await fetch("http://localhost:4000/logout",{
+            credentials:"include"
+        })
+        navigate("/")
+    }   
 
     const user = useSelector(state => state.user.user)
     return (
@@ -35,7 +43,9 @@ const Sidebar = () => {
                 {
                     aside[user.role]?.map(e => {
                         return (<li key={e.name} style={{backgroundColor:path===e.route? "#565872":""}}>
+                            {e.name === "Log Out"? <Link onClick={logout}>{e.name}</Link>:
                             <Link to={e.route}>{e.name}</Link>
+                            }
                         </li>)
                     })
                 }

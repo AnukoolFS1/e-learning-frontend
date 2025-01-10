@@ -1,0 +1,15 @@
+.users{
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.user{
+    flex: 1 1 auto;
+    width: 10vw;
+    border: 1px solid #0000004d;
+    border-radius: 4px;
+    padding: 1rem;
+}

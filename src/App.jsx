@@ -7,6 +7,7 @@ import Course from "./components/dashboard/Course/Course";
 import NewBatch from "./components/dashboard/Batch/Newbatch";
 import BatchDetails from "./components/dashboard/Batch/BatchDetails";
 import Students from "./components/dashboard/students/Students";
+import Instructor from "./components/dashboard/instructor/Instructor";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="new-batch" element={<NewBatch />} />
           <Route path="courses" element={<Course />} />
           <Route path="students" element={<Students />} />
+          <Route path="instructors" element={<Instructor />} />
         </Route>
       </Routes>
     </Router>
