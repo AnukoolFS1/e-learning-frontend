@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Input from "../../forms/Input"
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NewBatch = () => {
     const navigate = useNavigate()
@@ -10,21 +10,23 @@ const NewBatch = () => {
         navigate("/dashboard")
     }
 
+    const courses = useSelector(state => state.courses.courses)
     const instructors = useSelector(state => state.instructors.instructors)
     const students = useSelector(state => state.students.students)
     const [formState, setFormState] = useState({
         name: "",
-        instructor: user.id,
+        course: "",
+        instructor: "",
         students: [],
     });
 
     const checkBox = (e) => {
-        if(e.target.checked){
+        if (e.target.checked) {
             setFormState(prev => {
-               prev.students.push(e.target.name)
-                return {...prev }
+                prev.students.push(e.target.name)
+                return { ...prev }
             })
-        }else{
+        } else {
             setFormState(prev => {
 
                 prev.students = prev.students.filter(element => {
@@ -32,42 +34,72 @@ const NewBatch = () => {
                     console.log(e.target.name, element)
                     return e.target.name !== element
                 })
-                 return {...prev }
-             })
+                return { ...prev }
+            })
         }
     }
 
 
+    const handleInput = (e) => {
+        setFormState(prev => {
+            return { ...prev, [e.target.name]: e.target.value }
+        })
+    }
+    async function onSubmit(e) {
+        e.preventDefault()
+        if (user.role === "instructor") setFormState(prev => ({ ...prev, instructor: user.id }));
+        const response = await fetch("http://localhost:4000/batch", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formState),
+            credentials: "include"
+        });
+        const data = await response.json();
+        console.log(data)
+    }
+
     return (
         <form action="" style={{ color: 'black' }}>
             <h2>Add a new batch</h2>
-            <Input title={"Name"} name={"name"} type={"text"} />
+            <Input title={"Name"} name={"name"} type={"text"} handleInput={handleInput} />
             <div>
-                <label htmlFor="Instructor">Instructor</label>
-                <select name="instructor" id="Instructor">
-                    {user?.role === "instructor" ?
-                        <option value={user.id} >{user.name}</option> :
-                        instructors?.map(e => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
+                <label htmlFor="Course">Course</label>
+                <select name="course" id="Course" onChange={handleInput}>
+                    <option>--select--</option>
+                    {
+                        courses?.map((e) => {
+                            return (<option value={e._id} key={e._id} >{e.name}</option>)
                         })
                     }
                 </select>
             </div>
-            <div style={{ display: "flex"}}>
+            <div>
+                <label htmlFor="Instructor">Instructor</label>
+                <select name="instructor" id="Instructor" onChange={handleInput}>
+                    {user?.role === "instructor" ?
+                        <option value={user._id}>{user.name}</option> :
+                        instructors?.map(e => {
+                            return (<option key={e._id} value={e._id}>{e.name}</option>)
+                        })
+                    }
+                </select>
+            </div>
+            <div style={{ display: "flex" }}>
                 <label htmlFor="students">Add Students</label>
                 <ul name="student" id="students">
                     {
                         students?.map(e => {
 
-                            return (<li key={e._id}>
-                                <input type="checkbox" id={e.email} name={e._id} onChange={checkBox} />
-                                <label htmlFor={e.email}>{e.name}</label>
-                            </li>)
+                            return (
+                                <li key={e._id}>
+                                    <input type="checkbox" id={e.email} name={e._id} onChange={checkBox} />
+                                    <label htmlFor={e.email}>{e.name}</label>
+                                </li>)
                         })
                     }
                 </ul>
             </div>
-            <button>Submit</button>
+            <button onClick={onSubmit}>Submit</button>
         </form>
     )
 }

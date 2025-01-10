@@ -13,7 +13,8 @@ const Batch = () => {
         <div className="batch">
             {
                 batches?.map(e => {
-                    return (<Batches batch={e} name={e.name} intructor={e.instructor} course={e.course} />)
+                    console.log(e.instructor)
+                    return (<Batches batch={e} name={e.name} instructor={e.instructor.name} course={e.course.name} key={e._id} />)
                 })
             }
             <AddCard tab={"Batch"} navigation={"/dashboard/new-batch"} /> 
