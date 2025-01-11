@@ -119,17 +119,6 @@ const BatchDetails = () => {
                 </>
             )}
 
-            <h2 className="section-title">Study Materials:</h2>
-            {batchDetails.studyMaterials?.length > 0 ? (
-                <ul className="details-list">
-                    {batchDetails.studyMaterials.map((material, index) => (
-                        <li key={index}>{material.title}</li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No study materials available.</p>
-            )}
-
             <p className="timestamp">
                 <strong>Created At:</strong> {new Date(batchDetails.createdAt).toLocaleString()}
             </p>
