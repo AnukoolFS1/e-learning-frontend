@@ -19,6 +19,7 @@ const Dashboard = () => {
                 method: "GET",
                 credentials: "include"
             })
+            console.log(response.ok)
 
             if(!response.ok){
                  return navigate('/signin')
