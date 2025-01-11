@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "./Input"
+import Input from "./Input";
+import "../css/form.css"
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -34,33 +35,36 @@ const Signup = () => {
             formData.append(key, formState[key])
         }
 
-        try{const response = await fetch("http://localhost:4000/signup", {
-            method: "POST",
-            body: formData
-        })
-        if(!response.ok){
-            const data = await response.json();
-            alert(data.msg)
-        }else{
-            navigate('/')
+        try {
+            const response = await fetch("http://localhost:4000/signup", {
+                method: "POST",
+                body: formData
+            })
+            if (!response.ok) {
+                const data = await response.json();
+                alert(data.msg)
+            } else {
+                navigate('/')
+            }
         }
-    }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     }
     return (
-        <form action="" className="">
-            <h1>Sign up</h1>
-            {inputs.map((e, i) => {
-                return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
-            })}
-            <select name="role" id="Role" onChange={handleInput}>
-                {options.map((e, i) => (<option value={e} key={i}>{e}</option>))}
-            </select>
-            <button onClick={onSubmit}>Submit</button>
-            <Link to={"/signin"}>New User!</Link>
-        </form>
+        <div className="form">
+            <form action="" className="">
+                <h1>Sign up</h1>
+                {inputs.map((e, i) => {
+                    return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
+                })}
+                <select name="role" id="Role" onChange={handleInput}>
+                    {options.map((e, i) => (<option value={e} key={i}>{e}</option>))}
+                </select>
+                <button onClick={onSubmit}>Submit</button>
+                <Link to={"/signin"}>Already Signed up!</Link>
+            </form>
+        </div>
     )
 }
 

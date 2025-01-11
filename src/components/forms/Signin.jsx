@@ -4,8 +4,8 @@ import Input from "./Input";
 
 const Signin = () => {
     const inputs = [
-        { title: "Email", name: "email", type:"text" },
-        { title: "Password", name: "password", type:"password" },
+        { title: "Email", name: "email", type: "text" },
+        { title: "Password", name: "password", type: "password" },
     ]
 
     const navigate = useNavigate()
@@ -39,18 +39,20 @@ const Signin = () => {
             }
         } catch (err) {
         }
-        
+
     }
 
     return (
-        <form action="">
-            <h1>Sign in</h1>
-            {inputs.map((e, i) => {
-                return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
-            })}
-            <button onClick={onSubmit}>Submit</button>
-            <Link to={"/signup"}>New User!</Link>
-        </form>
+        <div className="form">
+            <form action="">
+                <h1>Sign in</h1>
+                {inputs.map((e, i) => {
+                    return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
+                })}
+                <button onClick={onSubmit}>Submit</button>
+                <Link to={"/signup"}>New User!</Link>
+            </form>
+        </div>
     )
 }
 
