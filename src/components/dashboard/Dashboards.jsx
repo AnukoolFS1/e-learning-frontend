@@ -8,6 +8,7 @@ import { addInstructor } from "../../redux/instructors";
 import { addUser } from "../../redux/userSlice";
 import { addStudents } from "../../redux/studentSlice";
 import { useDispatch } from "react-redux";
+import { addMaterials } from "../../redux/materialsSlice";
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -25,6 +26,7 @@ const Dashboard = () => {
             dispatch(addBatches(data.batches));
             dispatch(addCourses(data.courses));
             dispatch(addStudents(data.students)); 
+            dispatch(addMaterials(data.studyMaterials))
             dispatch(addInstructor(data.instructors)); 
         }
         fetchData()

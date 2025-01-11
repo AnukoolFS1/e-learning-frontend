@@ -5,8 +5,10 @@
 }
 
 .batchCard{
-    border: 1px solid black;
+    /* width: 30vw; */
+    border: 1px solid grey;
     box-shadow: 1px 1px 5px #00000040;
+    background-color: aqua;
     display: inline-block;
     color: black;
     padding: 1rem;

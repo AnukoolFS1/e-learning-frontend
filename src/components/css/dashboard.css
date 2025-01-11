@@ -4,11 +4,17 @@
     position: relative;
 }
 
-.dashboard div {
+.dashboard > div {
     flex: 4;
 }
 
 .dashboard .context{
     overflow-y: scroll;
     height: 100vh;
+}
+
+.AddCard{
+    font-weight: 700;
+    display: grid;
+    place-items: center;
 }

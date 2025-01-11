@@ -6,7 +6,7 @@ const AddCard = ({tab, navigation}) => {
     const navigate = useNavigate()
 
     return (
-        <div className="batchCard" onClick={() => navigate(navigation)} style={{display:statement?"block":"none", width:"10vw"}}>
+        <div className="batchCard AddCard" onClick={() => navigate(navigation)}>
             Add New {tab}
         </div>
     )

@@ -10,6 +10,7 @@ import Students from "./components/dashboard/students/Students";
 import Instructor from "./components/dashboard/instructor/Instructor";
 import StudyMaterials from "./components/dashboard/studymaterial/StudyMaterials";
 import NewMaterial from "./components/dashboard/studymaterial/NewMaterial";
+import ViewMaterial from "./components/dashboard/studymaterial/ViewMaterial";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="students" element={<Students />} />
           <Route path="instructors" element={<Instructor />} />
           <Route path="study-materials" element={<StudyMaterials />} />
+          <Route path="study-materials/:batchId" element={<ViewMaterial />} />
           <Route path="new-material" element={<NewMaterial />} />
         </Route>
       </Routes>
