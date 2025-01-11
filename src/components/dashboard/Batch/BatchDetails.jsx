@@ -35,7 +35,7 @@ function StudentList({ batchID, display, batchStudents, functioning, path }) {
     async function onSubmit(e) {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:4000/batch/${path}`, {
+            const response = await fetch(`https://e-learning-backend-11lu.onrender.com/batch/${path}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formState),
