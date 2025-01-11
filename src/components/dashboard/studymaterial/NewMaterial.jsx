@@ -25,7 +25,7 @@ const NewMaterial = () => {
         formdata.append('name', name);
         formdata.append('batch', batch);
 
-        const response = await fetch("https://e-learning-backend-11lu.onrender.com/addfile", {
+        const response = await fetch("https://e-learning-backend-11lu.onrender.com/batch/addfile", {
             method: "POST",
             body: formdata
         })

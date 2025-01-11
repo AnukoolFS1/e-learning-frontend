@@ -35,9 +35,15 @@ const Signin = () => {
             })
 
             if (response.ok) {
+                const data = await response.json();
+                console.log(data)
                 navigate('/dashboard')
+            }else{
+                const data = await response.json();
+                console.log(data)
             }
         } catch (err) {
+            console.log(err)
         }
 
     }
