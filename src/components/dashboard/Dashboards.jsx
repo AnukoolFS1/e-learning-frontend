@@ -22,7 +22,9 @@ const Dashboard = () => {
             console.log(response.ok)
 
             if(!response.ok){
-                 return navigate('/signin')
+                const data = await response.json();
+                console.log(data)
+                return navigate('/signin')
             }else{
                 const data = await response.json();
                 dispatch(addUser(data.user));
