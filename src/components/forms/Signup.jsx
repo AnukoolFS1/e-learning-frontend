@@ -13,10 +13,10 @@ const Signup = () => {
         role: "student"
     })
     const inputs = [
-        { title: "Name", name: "name" },
-        { title: "Email", name: "email" },
-        { title: "Password", name: "password" },
-        { title: "Phone", name: "phone" },
+        { title: "Name", name: "name", type: "text" },
+        { title: "Email", name: "email", type: "text" },
+        { title: "Password", name: "password", type: "password" },
+        { title: "Phone", name: "phone", type:"text" },
     ]
     const options = ["Student", "Instructor", "Admin"];
 

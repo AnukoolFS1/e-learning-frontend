@@ -53,7 +53,7 @@ const Signin = () => {
             <form action="">
                 <h1>Sign in</h1>
                 {inputs.map((e, i) => {
-                    return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
+                    return (<Input title={e.title} name={e.name} type={e.type} key={i} handleInput={handleInput} />)
                 })}
                 <button onClick={onSubmit}>Submit</button>
                 <Link to={"/signup"}>New User!</Link>
