@@ -49,7 +49,7 @@ const NewBatch = () => {
         e.preventDefault()
         try {
             if (user.role === "instructor") setFormState(prev => ({ ...prev, instructor: user.id }));
-            const response = await fetch("http://localhost:4000/batch", { //http://localhost:4000
+            const response = await fetch("https://e-learning-backend-11lu.onrender.com/batch", { //http://localhost:4000
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formState),

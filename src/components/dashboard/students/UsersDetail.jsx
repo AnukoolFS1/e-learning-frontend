@@ -39,7 +39,7 @@ const UserDetails = () => {
             }else {
                 newUserCollections = students.filter(e => e._id !== user._id)
             }
-            fetch(`http://localhost:4000/user/${user._id}`, {
+            fetch(`https://e-learning-backend-11lu.onrender.com/user/${user._id}`, {
                 method: "DELETE",
                 credentials: "include"
             }).then(result => {
