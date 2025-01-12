@@ -36,7 +36,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await fetch("https://e-learning-backend-11lu.onrender.com/signup", {
+            const response = await fetch("http://localhost:4000/signup", {
                 method: "POST",
                 body: formData
             })

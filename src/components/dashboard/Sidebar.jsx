@@ -30,7 +30,7 @@ const Sidebar = () => {
     const path = useLocation().pathname.split('/')[2];
 
     const logout = async () => {
-        await fetch("https://e-learning-backend-11lu.onrender.com/logout",{
+        await fetch("http://localhost:4000/logout",{
             credentials:"include"
         })
         navigate("/")

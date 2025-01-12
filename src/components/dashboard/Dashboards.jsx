@@ -15,7 +15,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         async function fetchData (){
-            const response = await fetch('https://e-learning-backend-11lu.onrender.com',{
+            const response = await fetch('http://localhost:4000',{
                 method: "GET",
                 credentials: "include"
             })
