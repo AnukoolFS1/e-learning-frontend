@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar"
 import '../css/dashboard.css';
 import { addBatches } from "../../redux/batchesSlice";
 import { addCourses } from "../../redux/courseSlice";
-import { addInstructor } from "../../redux/instructors";
+import { addInstructor } from "../../redux/studentSlice";
 import { addUser } from "../../redux/userSlice";
 import { addStudents } from "../../redux/studentSlice";
 import { useDispatch } from "react-redux";
