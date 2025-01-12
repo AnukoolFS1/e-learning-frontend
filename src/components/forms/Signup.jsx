@@ -13,10 +13,10 @@ const Signup = () => {
         role: "student"
     })
     const inputs = [
-        { title: "Name", name: "name" },
-        { title: "Email", name: "email" },
-        { title: "Password", name: "password" },
-        { title: "Phone", name: "phone" },
+        { title: "Name", name: "name", type: "text" },
+        { title: "Email", name: "email", type: "text" },
+        { title: "Password", name: "password", type: "password" },
+        { title: "Phone", name: "phone", type:"text" },
     ]
     const options = ["Student", "Instructor", "Admin"];
 
@@ -56,7 +56,7 @@ const Signup = () => {
             <form action="" className="">
                 <h1>Sign up</h1>
                 {inputs.map((e, i) => {
-                    return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
+                    return (<Input title={e.title} type={e.type} name={e.name} key={i} handleInput={handleInput} />)
                 })}
                 <select name="role" id="Role" onChange={handleInput}>
                     {options.map((e, i) => (<option value={e} key={i}>{e}</option>))}
