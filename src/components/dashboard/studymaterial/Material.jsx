@@ -19,7 +19,7 @@ const Material = ({ material, name, path, publicid, id }) => {
                 style={{
                     pointerEvents: 'none',
                 }}
-                frameborder="0"></iframe>
+                frameBorder="0"></iframe>
         </div>
     )
 }

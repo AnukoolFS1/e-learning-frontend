@@ -1,18 +1,15 @@
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
+import User from "./User";
 import "../../css/users.css"
 const Students = () => {
-    const students = useSelector(state => state.students.students);
+    const students = useSelector(state => state.users.students);
     
     return (
         <div className="users">
             {
                 students?.map(e => {
                     return (
-                        <div className="user">
-                            <h2>{e.name}</h2>
-                            <p>{e.email}</p>
-                            <p>{e.phone}</p>
-                        </div>
+                        <User key={e._id} user={e} />
                     )
                 })
             }

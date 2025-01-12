@@ -6,7 +6,7 @@ const ViewMaterial = () => {
 
     return (
         <div>
-            <iframe className="fullpreview" src={Material.path} frameborder="0" style={{width:"100%"}}></iframe>
+            <iframe className="fullpreview" src={Material.path} frameBorder="0" style={{width:"100%"}}></iframe>
         </div>
     )
 }

@@ -56,7 +56,7 @@ const Signup = () => {
             <form action="" className="">
                 <h1>Sign up</h1>
                 {inputs.map((e, i) => {
-                    return (<Input title={e.title} name={e.name} key={i} handleInput={handleInput} />)
+                    return (<Input title={e.title} type={e.type} name={e.name} key={i} handleInput={handleInput} />)
                 })}
                 <select name="role" id="Role" onChange={handleInput}>
                     {options.map((e, i) => (<option value={e} key={i}>{e}</option>))}

@@ -5,12 +5,10 @@
 }
 
 .batchCard, .user{
-    /* width: 30vw; */
-    border: 1px solid grey;
     box-shadow: 1px 1px 5px #00000040;
-    background-color: palegoldenrod;
+    background-color: #3A6D8C;
     display: inline-block;
-    color: black;
+    color: #E7FBB4;
     padding: 1rem;
     border-radius: 4px;
 }
